@@ -25,8 +25,15 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 
 #########################################################
-### your code goes here ###
 
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+clf = GaussianNB() #use Gaussian Naive Bayes Classifier
+clf.fit(features_train, labels_train) #fit the training data
+pred = clf.predict(features_test) #Classify the data
+accuracy = accuracy_score(labels_test, pred)
+
+print "accuracy = ", accuracy
 
 #########################################################
 
