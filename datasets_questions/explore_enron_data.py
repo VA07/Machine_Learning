@@ -26,7 +26,7 @@ for person_name in enron_data.keys():
 	   count += 1
 	   
 	   
-print "the no. of poi = "count
+print "the no. of poi = ",count
 
 #Data Query
 
