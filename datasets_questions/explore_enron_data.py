@@ -26,11 +26,11 @@ for person_name in enron_data.keys():
 	   count += 1
 	   
 	   
-#print count
+print "the no. of poi = "count
 
 #Data Query
 
-#print enron_data['PRENTICE JAMES']['total_stock_value']
-#print enron_data['COLWELL WESLEY']['from_this_person_to_poi']
+print enron_data['PRENTICE JAMES']['total_stock_value']
+print enron_data['COLWELL WESLEY']['from_this_person_to_poi']
 print enron_data['SKILLING JEFFREY K']['exercised_stock_options']
 
