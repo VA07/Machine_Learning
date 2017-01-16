@@ -47,16 +47,24 @@ for person in ['SKILLING JEFFREY K', 'LAY KENNETH L', 'FASTOW ANDREW S' ]:
 print "The guy who got most of the money was ", accused, ". He got ", temp, " dollars"
 
 #people with quantified salaries and no. with valid email adresses
-email_count = 0; salaries_count = 0
+email_count = 0; salaries_count = 0; payment_count = 0; poi_pay_count = 0
 for person in enron_data.keys():
 
-    if enron_data[person]['email_address'] != 'NaN':
-	   email_count += 1
+   # if enron_data[person]['email_address'] != 'NaN':
+#	   email_count += 1
 	   
-    if enron_data[person]['salary'] != 'NaN':
-	   salaries_count += 1
+    #if enron_data[person]['salary'] != 'NaN':
+#	   salaries_count += 1
 	   
+	if enron_data[person]['total_payments'] == 'NaN':
+	   payment_count += 1
+	   
+	if enron_data[person]['total_payments'] == 'NaN' and enron_data[person]['poi'] == 1: 
+	   poi_pay_count += 1
 
 print "Number of persons with quantified Salaries is ", salaries_count
 print "Number of persons with valid email address is ", email_count
+print "Percentage of people with NaN payments ",float(payment_count)/(len(enron_data))*100, "%"
+print "Percentage of POI with NaN payments ",float(poi_pay_count)/(len(enron_data))*100, "%"
+
 
