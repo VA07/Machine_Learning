@@ -41,8 +41,6 @@ print "Prediction time:", round(time() - t1, 3), "s"
 accuracy = accuracy_score(labels_test, pred)
 print "accuracy = ", accuracy*100, "%"
 
-
-
 #########################################################
 
 
