@@ -50,12 +50,14 @@ print "The guy who got most of the money was ", accused, ". He got ", temp, " do
 email_count = 0; salaries_count = 0; payment_count = 0; poi_pay_count = 0
 for person in enron_data.keys():
 
-   # if enron_data[person]['email_address'] != 'NaN':
-#	   email_count += 1
+	if enron_data[person]['email_address'] != 'NaN':
+	   email_count += 1
 	   
-    #if enron_data[person]['salary'] != 'NaN':
-#	   salaries_count += 1
-	   
+	if enron_data[person]['salary'] != 'NaN':
+	   salaries_count += 1
+
+	#percentage of people and poi's whose payment details are not available
+
 	if enron_data[person]['total_payments'] == 'NaN':
 	   payment_count += 1
 	   
@@ -64,6 +66,8 @@ for person in enron_data.keys():
 
 print "Number of persons with quantified Salaries is ", salaries_count
 print "Number of persons with valid email address is ", email_count
+
+#percentage of people and poi's whose payment details are not available
 print "Percentage of people with NaN payments ",float(payment_count)/(len(enron_data))*100, "%"
 print "Percentage of POI with NaN payments ",float(poi_pay_count)/(len(enron_data))*100, "%"
 
