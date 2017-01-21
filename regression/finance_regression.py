@@ -41,11 +41,16 @@ test_color = "r"
 from sklearn import linear_model
 reg = linear_model.LinearRegression()
 reg.fit(feature_train,target_train)
+pred = reg.predict(feature_train)
+
+#slope and intercept 
+print "slope = ", reg.coef_
+print "intercept = ", reg.intercept_
+
+#Score test
 
 
-
-
-
+print "Score = ", reg.score(feature_test,target_test)
 
 
 ### draw the scatterplot, with color-coded training and testing points
