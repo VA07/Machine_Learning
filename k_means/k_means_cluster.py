@@ -57,21 +57,32 @@ poi, finance_features = targetFeatureSplit( data )
 #Range of a Feature
 feats = []
 feature = feature_1
+
 #Max and Min of a feature
 for person in data_dict.keys():
     if data_dict[person][feature] != 'NaN':
       feats.append(data_dict[person][feature])
 
 print "Max of feats = ", max(feats)
-
 print "Min of feats = ", min(feats)
 
+#feature Scaling, MinMaxScaler()
+from sklearn.preprocessing import MinMaxScaler
+min_max_scaler = MinMaxScaler()
+finance_features_scaled  = min_max_scaler.fit_transform(finance_features)
+
+
+#predict scaled value of input
+fin_features = [200000, 1000000]
+fin_feature_scaled = min_max_scaler.transform(fin_features)
+print "Rescaled salary = ", fin_feature_scaled[0]
+print "Rescaled exercised_stock_options = ", fin_feature_scaled[1]
 
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
-for f1, f2 in finance_features:
+for f1, f2 in finance_features_scaled:
     plt.scatter( f1, f2 )
 plt.show()
 
@@ -79,8 +90,8 @@ plt.show()
 ### for the data and store them to a list called pred
 from sklearn.cluster import KMeans
 
-kmeans = KMeans(n_clusters = 2).fit(finance_features)
-pred = kmeans.predict(finance_features)
+kmeans = KMeans(n_clusters = 2).fit(finance_features_scaled)
+pred = kmeans.predict(finance_features_scaled)
 
 
 
