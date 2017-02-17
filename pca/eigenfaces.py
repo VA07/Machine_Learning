@@ -66,7 +66,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 ###############################################################################
 # Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled
 # dataset): unsupervised feature extraction / dimensionality reduction
-n_components = 150
+#n_components = [10, 15, 25, 50, 100, 250]
+n_components = 100
 
 print "Extracting the top %d eigenfaces from %d faces" % (n_components, X_train.shape[0])
 t0 = time()
@@ -85,7 +86,10 @@ print "done in %0.3fs" % (time() - t0)
 ###############################################################################
 # Train a SVM classification model
 
+
+
 print "Fitting the classifier to the training set"
+
 t0 = time()
 param_grid = {
          'C': [1e3, 5e3, 1e4, 5e4, 1e5],
@@ -109,6 +113,9 @@ print "done in %0.3fs" % (time() - t0)
 
 print classification_report(y_test, y_pred, target_names=target_names)
 print confusion_matrix(y_test, y_pred, labels=range(n_classes))
+#explained variance of pca components
+#print("expalined Var = "),(pca.explained_variance_ratio_)
+
 
 
 ###############################################################################
